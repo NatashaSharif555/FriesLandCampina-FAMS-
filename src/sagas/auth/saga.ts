@@ -22,11 +22,10 @@ function* login(action: any): Generator<any, any, any> {
       returnSecureToken: true,
     });
     if (response.status === 200) {
+      window.alert('Log In successful!'); 
 
-      return response;
-
+      yield put(loginSuccess());
     }
-    yield put(loginSuccess());
   } catch (error: any) {
     yield put(loginFailure(error.message));
   }
@@ -41,11 +40,10 @@ function* signup(action: any): Generator<any, any, any> {
       returnSecureToken: true,
     });
     if (response.status === 200) {
+      window.alert('Sign Up successful!'); 
 
-      return response;
-
+      yield put(signupSuccess());
     }
-    yield put(signupSuccess());
   } catch (error:any) {
     yield put(signupFailure(error.message));
   }
