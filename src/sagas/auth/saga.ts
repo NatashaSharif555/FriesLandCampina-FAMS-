@@ -16,7 +16,7 @@ import {
 function* login(action: any): Generator<any, any, any> {
   try {
     const { email, password } = action.payload;
-    const response = yield call(axios.post, `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBvvb6wHN-OJBEZysH3bYz9oIbJcDmMMT0`, {
+    const response = yield call(axios.post, `${process.env.REACT_APP_LOGIN_URL}+ ${process.env.REACT_APP_API_KEY}`, {
       email,
       password,
       returnSecureToken: true,
@@ -34,7 +34,7 @@ function* login(action: any): Generator<any, any, any> {
 function* signup(action: any): Generator<any, any, any> {
   try {
     const { email, password } = action.payload;
-    const response = yield call(axios.post, `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBvvb6wHN-OJBEZysH3bYz9oIbJcDmMMT0`, {
+    const response = yield call(axios.post, `${process.env.REACT_APP_SIGNUP_URL} + ${process.env.REACT_APP_API_KEY}`, {
       email,
       password,
       returnSecureToken: true,
