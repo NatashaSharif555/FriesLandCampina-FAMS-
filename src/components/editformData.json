@@ -1,0 +1,24 @@
+{
+    "data": {
+        "budgetYear": "2023",
+  
+        "department": "IT",
+      
+        "division": "Multan",
+      
+        "assetDescription": "This asset belongs to IT infrastructure",
+      
+        "assetType": "Device",
+      
+        "amount": "300000",
+      
+        "budgetUtilized": "100000",
+      
+        "balance": "200000",
+      
+        "attatchement": "FA Approval 0002",
+      
+        "submit": true
+    }
+  }
+  

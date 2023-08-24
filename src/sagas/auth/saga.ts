@@ -1,29 +1,28 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
-import axios from 'axios';
+import { call, put, takeLatest } from "redux-saga/effects";
 import {
   LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
   SIGNUP_REQUEST,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
   loginSuccess,
   loginFailure,
-  signupSuccess,
-  signupFailure,
-} from './actions';
+} from "./actions";
+import { api } from "../../api/service";
 
 function* login(action: any): Generator<any, any, any> {
   try {
     const { email, password } = action.payload;
-    const response = yield call(axios.post, `${process.env.REACT_APP_LOGIN_URL}+ ${process.env.REACT_APP_API_KEY}`, {
-      email,
-      password,
-      returnSecureToken: true,
-    });
+    const requestParams = {
+      path: `${process.env.REACT_APP_LOGIN_URL}`,
+      method: "POST",
+      payload: {
+        email,
+        password,
+        returnSecureToken: true,
+      },
+    };
+    const response = yield call(api, requestParams);
+    console.log(response);
     if (response.status === 200) {
-      window.alert('Log In successful!'); 
-
+      window.alert("Log In successful!");
       yield put(loginSuccess());
     }
   } catch (error: any) {
@@ -34,18 +33,23 @@ function* login(action: any): Generator<any, any, any> {
 function* signup(action: any): Generator<any, any, any> {
   try {
     const { email, password } = action.payload;
-    const response = yield call(axios.post, `${process.env.REACT_APP_SIGNUP_URL} + ${process.env.REACT_APP_API_KEY}`, {
-      email,
-      password,
-      returnSecureToken: true,
-    });
+    const requestParams = {
+      path: `${process.env.REACT_APP_SIGNUP_URL}`,
+      method: "POST",
+      payload: {
+        email,
+        password,
+        returnSecureToken: true,
+      },
+    };
+    const response = yield call(api, requestParams);
+    console.log(response);
     if (response.status === 200) {
-      window.alert('Sign Up successful!'); 
-
-      yield put(signupSuccess());
+      window.alert(" SIGNUP successful!");
+      yield put(loginSuccess());
     }
-  } catch (error:any) {
-    yield put(signupFailure(error.message));
+  } catch (error: any) {
+    yield put(loginFailure(error.message));
   }
 }
 
