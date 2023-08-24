@@ -72,14 +72,12 @@ const FormRenderComponent = () => {
           {showEmptyForm && "Edit Form"}
         </button>
       )}
-      {/* <div ref={formioContainer}></div> */}
-      <Formio form={formioFormData } />
+      <div ref={formioContainer}></div>
     </div>
   );
 };
 
 export default FormRenderComponent;
-
 
 
 
