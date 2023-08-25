@@ -5,6 +5,8 @@ import Login from './components/Login';
 
 import FormComponet from './components/FormBuilder';
 import FormRenderComponent from './components/form';
+import FormEditComponent from './components/EditForm';
+import FormEditBuilderComponent from './components/EditFormBuilder';
 
 const App: React.FC = () => {
   return (
@@ -14,8 +16,14 @@ const App: React.FC = () => {
               <Link to="/form" className="nav-link">Form</Link>
         </li>
         <li className="nav-item">
-              <Link to="/formbuilder" className="nav-link">Formbuilder</Link>
-            </li>
+              <Link to="/formbuilder" className="nav-link">New Formbuilder</Link>
+        </li>
+        <li className="nav-item">
+              <Link to="/editFormbuilder" className="nav-link">Edit Formbuilder</Link>
+        </li>
+        {/* <li className="nav-item">
+              <Link to="/editFormData" className="nav-link">EditFormData</Link>
+            </li> */}
       </ul>
       <div className="container mt-5">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,6 +43,9 @@ const App: React.FC = () => {
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/form" element={<FormRenderComponent />} />
           <Route path="/formbuilder" element={<FormComponet />} />
+          <Route path='/editFormbuilder' element={< FormEditBuilderComponent />} />
+          {/* <Route path='/editFormData' element ={<FormEditComponent />} /> */}
+
         </Routes>
 
       </div>

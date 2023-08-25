@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Formio } from "formiojs";
-import formDataJson from "./EditFormBuilder.json";
+import formDataJson from "./EditFormBuilderData.json";
 import initialSubmissionData from "./editformData.json";
 
-const FormRenderComponent = () => {
+const FormEditComponent = () => {
   const formioContainer = React.createRef();
   const [showEmptyForm, setShowEmptyForm] = useState(true);
   const [formData, setFormData] = useState({});
@@ -29,10 +29,6 @@ const FormRenderComponent = () => {
           type: component.type,
           key: component.key,
           label: component.label,
-          validate: component.validate,
-        
-          
-          
         };
         return formioComponent;
       }),
@@ -41,21 +37,7 @@ const FormRenderComponent = () => {
   };
   const formioFormData = mapDataToFormio(formDataJson);
   useEffect(() => {
-    if (!showEmptyForm) {
-      // Create the Form.io form and attach it to the container
-      Formio.createForm(formioContainer.current, formioFormData)
-        .then((form) => {
-          // Set the initial submission data
-          form.submission = initialSubmissionData;
-
-          form.on("submit", (submission) => {
-            handleSubmission(submission);
-          });
-        })
-        .catch((error) => {
-          console.error("Error creating Form.io form:", error);
-        });
-    } else {
+   
       Formio.createForm(formioContainer.current, formioFormData)
         .then((form) => {
           // Add a submit event listener to the form
@@ -67,22 +49,18 @@ const FormRenderComponent = () => {
           console.error("Error creating Form.io form with data:", error);
         });
     }
-  }, [showEmptyForm, formDataJson]);
+  , [showEmptyForm, formDataJson]);
 
   return (
     <div>
       <h1>Form Render</h1>
-      {showEmptyForm && (
-        <button onClick={() => setShowEmptyForm(!showEmptyForm)}>
-          {showEmptyForm && "Edit Form"}
-        </button>
-      )}
+     
       <div ref={formioContainer}></div>
     </div>
   );
 };
 
-export default FormRenderComponent;
+export default FormEditComponent;
 
 
 

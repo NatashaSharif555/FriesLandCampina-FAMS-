@@ -1,24 +1,5 @@
 {
     "data": {
-        "budgetYear": "2023",
-  
-        "department": "IT",
-      
-        "division": "Multan",
-      
-        "assetDescription": "This asset belongs to IT infrastructure",
-      
-        "assetType": "Device",
-      
-        "amount": "300000",
-      
-        "budgetUtilized": "100000",
-      
-        "balance": "200000",
-      
-        "attatchement": "FA Approval 0002",
-      
-        "submit": true
-    }
+        "budgetYear":"2023-08-25T12:00:00+05:00","department":"plant and machinery","devision":"Multan","assetDescription":"This asset is a machinery type","type":"Machinery","budgetUtilized":"100000","balance":"20000","file1":[],"submit":true,"amount":300000    }
   }
   
