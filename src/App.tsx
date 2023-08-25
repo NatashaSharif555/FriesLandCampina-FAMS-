@@ -2,10 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
-
 import FormComponet from './components/FormBuilder';
 import FormRenderComponent from './components/form';
-import FormEditComponent from './components/EditForm';
 import FormEditBuilderComponent from './components/EditFormBuilder';
 
 const App: React.FC = () => {
@@ -20,10 +18,7 @@ const App: React.FC = () => {
         </li>
         <li className="nav-item">
               <Link to="/editFormbuilder" className="nav-link">Edit Formbuilder</Link>
-        </li>
-        {/* <li className="nav-item">
-              <Link to="/editFormData" className="nav-link">EditFormData</Link>
-            </li> */}
+        </li>    
       </ul>
       <div className="container mt-5">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,28 +29,17 @@ const App: React.FC = () => {
             <li className="nav-item">
               <Link to="/login" className="nav-link">Login</Link>
             </li> */}
-           
           </ul>
         </nav>
-
         <Routes>
           {/* <Route path="/signup" element={<Signup />} /> */}
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/form" element={<FormRenderComponent />} />
           <Route path="/formbuilder" element={<FormComponet />} />
           <Route path='/editFormbuilder' element={< FormEditBuilderComponent />} />
-          {/* <Route path='/editFormData' element ={<FormEditComponent />} /> */}
-
         </Routes>
-
       </div>
     </BrowserRouter>
-
-
-    // <div>
-    //   <FormComponet />
-   
-    // </div>
   );
 };
 

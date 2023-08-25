@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Formio } from "formiojs";
-import formDataJson from "./EditFormBuilder.json";
-import initialSubmissionData from "./editformData.json";
+import formDataJson from "./JsonFiles/EditFormBuilder.json";
+import initialSubmissionData from "./JsonFiles/editformData.json";
 
 const FormRenderComponent = () => {
   const formioContainer = React.createRef();
   const [showEmptyForm, setShowEmptyForm] = useState(true);
   const [formData, setFormData] = useState({});
+
+// handle form submisssion function
   const handleSubmission = (submission) => {
     console.log("Form Submission Data:", submission.data);
     setFormData(submission.data);
@@ -14,7 +16,6 @@ const FormRenderComponent = () => {
     const blob = new Blob([JSON.stringify(submission.data)], {
       type: "application/json",
     });
-    
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "edit.json";
@@ -22,6 +23,7 @@ const FormRenderComponent = () => {
     URL.revokeObjectURL(a.href);
   };
 
+  //map function to map the data from json file
   const mapDataToFormio = (jsonData) => {
     const formioData = {
       components: jsonData.components.map((component) => {
@@ -30,24 +32,25 @@ const FormRenderComponent = () => {
           key: component.key,
           label: component.label,
           validate: component.validate,
-        
-          
-          
         };
         return formioComponent;
       }),
     };
     return formioData;
   };
+
+  // map the json data in mapDataToFormio function
   const formioFormData = mapDataToFormio(formDataJson);
   useEffect(() => {
     if (!showEmptyForm) {
-      // Create the Form.io form and attach it to the container
+
+      // Create the Edit Form.io form and attach it to the container
       Formio.createForm(formioContainer.current, formioFormData)
         .then((form) => {
           // Set the initial submission data
           form.submission = initialSubmissionData;
 
+          //call the handlesubmission function on submit of form
           form.on("submit", (submission) => {
             handleSubmission(submission);
           });
@@ -56,6 +59,7 @@ const FormRenderComponent = () => {
           console.error("Error creating Form.io form:", error);
         });
     } else {
+     // Create the new Form.io form and attach it to the container
       Formio.createForm(formioContainer.current, formioFormData)
         .then((form) => {
           // Add a submit event listener to the form
@@ -83,8 +87,3 @@ const FormRenderComponent = () => {
 };
 
 export default FormRenderComponent;
-
-
-
-
-
