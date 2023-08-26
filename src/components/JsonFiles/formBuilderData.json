@@ -7,7 +7,7 @@
       "useLocaleSettings": false,
       "allowInput": true,
       "format": "yyyy-MM-dd",
-      "placeholder": "Budget Year",
+      "placeholder": "Enter Budget Year",
       "description": "",
       "tooltip": "",
       "customClass": "",
@@ -131,7 +131,7 @@
     {
       "label": "Department",
       "labelPosition": "top",
-      "placeholder": "Department",
+      "placeholder": "Enter Department",
       "description": "",
       "tooltip": "",
       "prefix": "",
@@ -219,7 +219,7 @@
     {
       "label": "Devision",
       "labelPosition": "top",
-      "placeholder": "Devision",
+      "placeholder": "Enter Devision",
       "description": "",
       "tooltip": "",
       "prefix": "",
@@ -307,7 +307,7 @@
     {
       "label": "Asset Description",
       "labelPosition": "top",
-      "placeholder": "Asset Description",
+      "placeholder": "Enter Asset Description",
       "description": "",
       "tooltip": "",
       "prefix": "",
@@ -402,7 +402,7 @@
     {
       "label": "Type",
       "labelPosition": "top",
-      "placeholder": "Type",
+      "placeholder": "Enter Type of asset",
       "description": "",
       "tooltip": "",
       "prefix": "",
@@ -490,7 +490,7 @@
     {
       "label": "Amount",
       "labelPosition": "top",
-      "placeholder": "Amount",
+      "placeholder": "Enter Amount",
       "description": "",
       "tooltip": "",
       "prefix": "",
@@ -577,7 +577,7 @@
     {
       "label": "Budget Utilized",
       "labelPosition": "top",
-      "placeholder": "Budget Utilized",
+      "placeholder": "Enter Budget Utilized",
       "description": "",
       "tooltip": "",
       "prefix": "",
@@ -665,7 +665,7 @@
     {
       "label": "Balance",
       "labelPosition": "top",
-      "placeholder": "Balance",
+      "placeholder": "Enter remaining Balance",
       "description": "",
       "tooltip": "",
       "prefix": "",
@@ -824,7 +824,7 @@
       "type": "file",
       "imageSize": "200",
       "input": true,
-      "placeholder": "",
+      "placeholder": "Attatch the files",
       "prefix": "",
       "suffix": "",
       "defaultValue": null,

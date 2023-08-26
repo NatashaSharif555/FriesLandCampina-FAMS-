@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useRef} from "react";
 import { Formio } from "formiojs";
 import formDataJson from "./JsonFiles/EditFormBuilder.json";
 import initialSubmissionData from "./JsonFiles/editformData.json";
 
 const FormRenderComponent = () => {
-  const formioContainer = React.createRef();
+  const formioContainer = useRef<HTMLDivElement>(null);
   const [showEmptyForm, setShowEmptyForm] = useState(true);
   const [formData, setFormData] = useState({});
 
 // handle form submisssion function
-  const handleSubmission = (submission) => {
+  const handleSubmission = (submission:any) => {
     console.log("Form Submission Data:", submission.data);
     setFormData(submission.data);
     // Save the submission data to a JSON file
@@ -24,14 +24,15 @@ const FormRenderComponent = () => {
   };
 
   //map function to map the data from json file
-  const mapDataToFormio = (jsonData) => {
+  const mapDataToFormio = (jsonData:any) => {
     const formioData = {
-      components: jsonData.components.map((component) => {
+      components: jsonData.components.map((component:any) => {
         let formioComponent = {
           type: component.type,
           key: component.key,
           label: component.label,
           validate: component.validate,
+          placeholder:component.placeholder
         };
         return formioComponent;
       }),
@@ -51,7 +52,7 @@ const FormRenderComponent = () => {
           form.submission = initialSubmissionData;
 
           //call the handlesubmission function on submit of form
-          form.on("submit", (submission) => {
+          form.on("submit", (submission:any) => {
             handleSubmission(submission);
           });
         })
@@ -63,7 +64,7 @@ const FormRenderComponent = () => {
       Formio.createForm(formioContainer.current, formioFormData)
         .then((form) => {
           // Add a submit event listener to the form
-          form.on("submit", (submission) => {
+          form.on("submit", (submission:any) => {
             handleSubmission(submission);
           });
         })

@@ -5,16 +5,17 @@ const FormComponent = () => {
   const [form, setForm] = useState({ components: [] });
 
   //set the data from form to form state
-  const onSubmit = (schema) => {
+  const onSubmit = (schema:any) => {
     setForm(schema);
   };
 
   //saving data to a file
   const saveFormConfigurationToFile = async () => {
-    const formData = {};
+    
+    const formData :any= {};
 
     // Loop through form components to collect field values
-    form.components.forEach((component) => {
+    form.components.forEach((component:any) => {
       if (component.key) {
         formData[component.key] = component.defaultValue;
       }
